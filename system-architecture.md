@@ -12,4 +12,15 @@ I use the following services:
   2. use the Route53 for the DNS name and domain for my portfolio
   3. then
 
+**AWS Services Commonly Used**
+
+Amazon S3 – Static website hosting
+Amazon CloudFront – Global content delivery
+AWS Lambda – Backend logic
+Amazon API Gateway – REST API creation
+Amazon DynamoDB – Visitor count storage
+AWS IAM – Security and permissions
+AWS Certificate Manager – HTTPS certificates
+Amazon Route 53 – Domain management
+AWS CodePipeline – Automated deployment
 
