@@ -14,13 +14,13 @@ I use the following services:
 
 **AWS Services Commonly Used**
 
-Amazon S3 – Static website hosting
-Amazon CloudFront – Global content delivery
-AWS Lambda – Backend logic
-Amazon API Gateway – REST API creation
-Amazon DynamoDB – Visitor count storage
-AWS IAM – Security and permissions
-AWS Certificate Manager – HTTPS certificates
-Amazon Route 53 – Domain management
-AWS CodePipeline – Automated deployment
+1. Amazon S3 – Static website hosting
+2. Amazon CloudFront – Global content delivery
+3. AWS Lambda – Backend logic
+4. Amazon API Gateway – REST API creation
+5. Amazon DynamoDB – Visitor count storage
+6. AWS IAM – Security and permissions
+7. AWS Certificate Manager – HTTPS certificates
+8. Amazon Route 53 – Domain management
+9. AWS CodePipeline – Automated deployment
 
