@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mudit Narayan Soni · Python & DevOps Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous"/>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#07070e;
+  --bg2:#0d0d1a;
+  --bg3:#12121f;
+  --surface:rgba(255,255,255,0.03);
+  --surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);
+  --border2:rgba(255,255,255,0.14);
+  --green:#00ff87;
+  --green-dim:rgba(0,255,135,0.12);
+  --green-glow:rgba(0,255,135,0.06);
+  --blue:#4fc3f7;
+  --blue-dim:rgba(79,195,247,0.1);
+  --orange:#ff9f43;
+  --orange-dim:rgba(255,159,67,0.1);
+  --text:#e8e8f0;
+  --muted:#6b6b80;
+  --muted2:#9898aa;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Space Grotesk',sans-serif;
+  --serif:'Playfair Display',serif;
+  --r:12px;
+}
+
+html{background:var(--bg);scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);overflow-x:hidden;line-height:1.6}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(0,255,135,0.3);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 4rem;
+  background:rgba(7,7,14,0.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:padding 0.3s;
+}
+.logo{
+  font-family:var(--mono);font-size:1rem;font-weight:500;
+  color:var(--green);text-decoration:none;letter-spacing:0.05em;
+}
+.logo span{color:var(--muted2)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:var(--muted2);text-decoration:none;
+  font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;
+  transition:color 0.2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--green);transform:scaleX(0);transition:transform 0.2s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--green)}
+.nav-cta{
+  padding:0.45rem 1.2rem;border-radius:6px;
+  border:1px solid var(--green);color:var(--green);
+  font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;font-family:var(--sans);
+}
+.nav-cta:hover{background:var(--green);color:#07070e}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:5rem 4rem 3rem;
+  position:relative;
+  overflow:hidden;
+  gap:4rem;
+}
+.hero-noise{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;
+}
+.hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  filter:blur(80px);
+}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,255,135,0.08),transparent 70%);top:-100px;right:-50px}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(79,195,247,0.06),transparent 70%);bottom:0;left:-100px}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(255,159,67,0.05),transparent 70%);top:30%;right:30%}
+
+.hero-left{position:relative;z-index:1}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.35rem 1rem;border-radius:20px;
+  background:var(--green-dim);border:1px solid rgba(0,255,135,0.2);
+  font-family:var(--mono);font-size:0.72rem;color:var(--green);
+  letter-spacing:0.08em;margin-bottom:1.5rem;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+.hero-greeting{
+  font-family:var(--mono);font-size:0.85rem;color:var(--muted2);
+  letter-spacing:0.1em;margin-bottom:0.5rem;
+}
+h1{
+  font-family:var(--sans);font-size:clamp(2.8rem,5vw,4.5rem);
+  font-weight:700;line-height:1.05;letter-spacing:-2px;
+  color:var(--text);margin-bottom:0.5rem;
+}
+h1 em{font-family:var(--serif);font-style:italic;color:var(--green);font-weight:400}
+.hero-role{
+  font-family:var(--mono);font-size:1rem;color:var(--muted2);
+  margin-bottom:1.2rem;min-height:1.5em;
+}
+.hero-role .typed{color:var(--blue)}
+.hero-desc{
+  font-size:0.95rem;color:var(--muted2);max-width:480px;
+  line-height:1.75;margin-bottom:2rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-main{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.7rem 1.6rem;border-radius:8px;
+  background:var(--green);color:#07070e;
+  font-weight:600;font-size:0.85rem;text-decoration:none;
+  transition:all 0.2s;border:none;cursor:pointer;font-family:var(--sans);
+}
+.btn-main:hover{background:#00e87a;transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.7rem 1.6rem;border-radius:8px;
+  border:1px solid var(--border2);color:var(--text);
+  font-weight:500;font-size:0.85rem;text-decoration:none;
+  transition:all 0.2s;background:transparent;cursor:pointer;font-family:var(--sans);
+}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+
+.socials{display:flex;gap:0.8rem}
+.social-btn{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--muted2);text-decoration:none;font-size:0.9rem;
+  transition:all 0.2s;
+}
+.social-btn:hover{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+
+/* hero right — photo + stats */
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.photo-frame{
+  width:280px;height:330px;border-radius:24px;
+  background:linear-gradient(135deg,var(--green-dim),var(--blue-dim));
+  border:1px solid rgba(0,255,135,0.2);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:23px}
+.photo-placeholder{
+  font-family:var(--mono);font-size:4rem;color:var(--green);opacity:0.3;
+}
+.photo-frame::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(7,7,14,0.4));
+}
+.hero-stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border-radius:12px;overflow:hidden;width:100%;
+}
+.hstat{
+  background:var(--bg3);padding:1rem;text-align:center;
+}
+.hstat-val{
+  font-family:var(--mono);font-size:1.4rem;font-weight:700;
+  color:var(--green);display:block;
+}
+.hstat-lab{font-size:0.7rem;color:var(--muted);letter-spacing:0.05em}
+
+/* ── SECTION BASE ── */
+section{padding:6rem 4rem}
+.sec-tag{
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--green);margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.sec-tag::before{content:'';display:block;width:24px;height:1px;background:var(--green)}
+.sec-title{
+  font-family:var(--sans);font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:1rem;
+}
+.sec-desc{font-size:0.92rem;color:var(--muted2);max-width:560px;line-height:1.75;margin-bottom:3rem}
+
+/* ── ABOUT ── */
+.about-bg{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--muted2);margin-bottom:1.1rem;font-size:0.93rem;line-height:1.8}
+.about-text strong{color:var(--text)}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.acard{
+  padding:1.2rem 1.4rem;border-radius:var(--r);
+  background:var(--surface);border:1px solid var(--border);
+}
+.acard-label{font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;font-family:var(--mono)}
+.acard-val{font-size:0.9rem;color:var(--text);font-weight:500}
+.acard-val a{color:var(--green);text-decoration:none}
+.acard-val a:hover{text-decoration:underline}
+.cgpa-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.2rem 0.7rem;border-radius:20px;
+  background:var(--green-dim);border:1px solid rgba(0,255,135,0.2);
+  font-family:var(--mono);font-size:0.75rem;color:var(--green);margin-left:0.5rem;
+}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.skill-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.6rem;
+  transition:border-color 0.25s,transform 0.25s;
+}
+.skill-card:hover{border-color:rgba(0,255,135,0.25);transform:translateY(-3px)}
+.skill-card-head{
+  display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);
+}
+.skill-icon{
+  width:38px;height:38px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.si-green{background:var(--green-dim);color:var(--green)}
+.si-blue{background:var(--blue-dim);color:var(--blue)}
+.si-orange{background:var(--orange-dim);color:var(--orange)}
+.skill-card-name{font-weight:600;font-size:0.9rem;color:var(--text)}
+.skill-card-sub{font-size:0.72rem;color:var(--muted);font-family:var(--mono)}
+.tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.tag{
+  font-size:0.7rem;padding:0.25rem 0.65rem;border-radius:20px;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  color:var(--muted2);font-family:var(--mono);
+  transition:all 0.2s;
+}
+.tag:hover,.tag.hot{background:var(--green-dim);border-color:rgba(0,255,135,0.3);color:var(--green)}
+.tag.blue{background:var(--blue-dim);border-color:rgba(79,195,247,0.25);color:var(--blue)}
+.tag.orange{background:var(--orange-dim);border-color:rgba(255,159,67,0.25);color:var(--orange)}
+
+/* skill bar */
+.skill-bar-wrap{margin:1rem 0 0.5rem}
+.skill-bar-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem}
+.skill-bar-name{font-size:0.78rem;color:var(--muted2)}
+.skill-bar-pct{font-size:0.72rem;font-family:var(--mono);color:var(--green)}
+.bar{height:3px;background:var(--border2);border-radius:2px;overflow:hidden;margin-bottom:0.8rem}
+.bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--green),var(--blue));transition:width 1s ease}
+
+/* ── EXPERTISE ── */
+.exp-bg{background:var(--bg2)}
+.expertise-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.exp-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:2rem;
+  transition:border-color 0.25s,transform 0.25s;position:relative;overflow:hidden;
+}
+.exp-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--green),var(--blue));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+}
+.exp-card:hover{border-color:rgba(0,255,135,0.2);transform:translateY(-4px)}
+.exp-card:hover::before{transform:scaleX(1)}
+.exp-card-icon{
+  font-size:1.5rem;margin-bottom:1.2rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:12px;
+}
+.exp-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.6rem}
+.exp-card p{font-size:0.85rem;color:var(--muted2);line-height:1.7;margin-bottom:1rem}
+.exp-card-link{
+  font-size:0.78rem;color:var(--green);text-decoration:none;
+  font-family:var(--mono);letter-spacing:0.05em;
+  display:inline-flex;align-items:center;gap:0.3rem;
+  transition:gap 0.2s;
+}
+.exp-card-link:hover{gap:0.6rem}
+.exp-sub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
+.exp-sub{
+  padding:1rem 1.2rem;border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);
+  transition:border-color 0.2s;
+}
+.exp-sub:hover{border-color:rgba(0,255,135,0.2)}
+.exp-sub h4{font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.3rem}
+.exp-sub p{font-size:0.78rem;color:var(--muted2);line-height:1.6}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem}
+.proj-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:2rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.proj-card:hover{border-color:rgba(0,255,135,0.22);transform:translateY(-5px)}
+.proj-num{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.12em}
+.proj-name{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.3}
+.proj-desc{font-size:0.83rem;color:var(--muted2);line-height:1.7;flex:1}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.35rem}
+.proj-tech{
+  font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:4px;
+  background:var(--blue-dim);border:1px solid rgba(79,195,247,0.2);
+  color:var(--blue);font-family:var(--mono);
+}
+.proj-links{display:flex;gap:1rem}
+.proj-link{
+  font-size:0.76rem;color:var(--muted2);text-decoration:none;
+  transition:color 0.2s;font-family:var(--mono);
+  display:flex;align-items:center;gap:0.3rem;
+}
+.proj-link:hover{color:var(--green)}
+
+/* ── EXPERIENCE / TIMELINE ── */
+.xp-bg{background:var(--bg2)}
+.timeline{display:flex;flex-direction:column}
+.tl-item{
+  display:grid;grid-template-columns:200px 1fr;
+  gap:3rem;padding:2.5rem 0;
+  border-bottom:1px solid var(--border);
+}
+.tl-item:last-child{border-bottom:none}
+.tl-left{}
+.tl-date{font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem}
+.tl-co{font-weight:700;color:var(--green);font-size:0.9rem;margin-bottom:0.2rem}
+.tl-type{font-size:0.72rem;color:var(--muted);font-family:var(--mono)}
+.tl-type span{
+  padding:0.15rem 0.5rem;border-radius:4px;
+  background:var(--green-dim);color:var(--green);
+  border:1px solid rgba(0,255,135,0.2);font-size:0.65rem;
+}
+.tl-role{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:1rem}
+.tl-points{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.tl-points li{
+  font-size:0.84rem;color:var(--muted2);padding-left:1.3rem;
+  position:relative;line-height:1.65;
+}
+.tl-points li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:0.75rem}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.edu-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:2rem;
+}
+.edu-icon{font-size:1.6rem;margin-bottom:1rem}
+.edu-deg{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;line-height:1.4}
+.edu-school{color:var(--green);font-size:0.85rem;margin-bottom:0.2rem;font-weight:500}
+.edu-period{color:var(--muted);font-size:0.78rem;font-family:var(--mono);margin-bottom:0.8rem}
+.edu-detail{font-size:0.82rem;color:var(--muted2);line-height:1.6}
+.edu-cgpa{
+  display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.8rem;
+  padding:0.3rem 0.8rem;border-radius:20px;
+  background:var(--green-dim);border:1px solid rgba(0,255,135,0.2);
+  font-family:var(--mono);font-size:0.75rem;color:var(--green);
+}
+.certs-list{display:flex;flex-direction:column;gap:0.8rem}
+.cert{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 1.2rem;border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);
+  transition:border-color 0.2s;
+}
+.cert:hover{border-color:rgba(0,255,135,0.2)}
+.cert-dot{
+  width:30px;height:30px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+}
+.cd-aws{background:var(--orange-dim);color:var(--orange)}
+.cd-az{background:var(--blue-dim);color:var(--blue)}
+.cd-oc{background:rgba(237,67,35,0.12);color:#ed4323}
+.cd-py{background:var(--green-dim);color:var(--green)}
+.cert-name{font-size:0.82rem;color:var(--text);font-weight:500}
+.cert-by{font-size:0.7rem;color:var(--muted);font-family:var(--mono)}
+
+/* ── ACHIEVEMENTS ── */
+.ach-bg{background:var(--bg2)}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.ach-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.6rem;
+  display:flex;align-items:flex-start;gap:1rem;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.ach-card:hover{border-color:rgba(0,255,135,0.22);transform:translateY(-3px)}
+.ach-ico{
+  width:42px;height:42px;border-radius:10px;
+  background:var(--green-dim);border:1px solid rgba(0,255,135,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.ach-txt{font-size:0.82rem;color:var(--muted2);line-height:1.65}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:0.9rem;margin-bottom:2rem}
+.clink{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.4rem;border-radius:var(--r);
+  background:var(--surface);border:1px solid var(--border);
+  text-decoration:none;color:var(--text);
+  transition:all 0.2s;
+}
+.clink:hover{border-color:rgba(0,255,135,0.3);transform:translateX(5px)}
+.clink-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--green-dim);display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;color:var(--green);flex-shrink:0;
+}
+.clink-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-family:var(--mono)}
+.clink-val{font-size:0.88rem;font-weight:500;color:var(--text)}
+
+/* contact form */
+.cform{display:flex;flex-direction:column;gap:1rem}
+.fgroup{display:flex;flex-direction:column;gap:0.4rem}
+.flabel{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-family:var(--mono)}
+.finput,.ftextarea{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:0.75rem 1rem;
+  color:var(--text);font-family:var(--sans);font-size:0.88rem;
+  outline:none;transition:border-color 0.2s;resize:vertical;
+}
+.finput:focus,.ftextarea:focus{border-color:rgba(0,255,135,0.4)}
+.finput::placeholder,.ftextarea::placeholder{color:var(--muted)}
+.ftextarea{min-height:130px}
+.form-status{font-size:0.82rem;margin-top:0.4rem;font-family:var(--mono)}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 4rem;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:0.78rem;color:var(--muted);
+}
+footer .fl{color:var(--green);font-family:var(--mono);font-weight:600}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{animation:fadeUp 0.5s ease both}
+.hero-greeting{animation:fadeUp 0.5s 0.05s ease both}
+h1{animation:fadeUp 0.5s 0.1s ease both}
+.hero-role{animation:fadeUp 0.5s 0.18s ease both}
+.hero-desc{animation:fadeUp 0.5s 0.24s ease both;opacity:0}
+.hero-btns{animation:fadeUp 0.5s 0.3s ease both;opacity:0}
+.socials{animation:fadeUp 0.5s 0.36s ease both;opacity:0}
+.hero-right{animation:fadeUp 0.6s 0.15s ease both}
+
+/* intersection observer fade */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;gap:2rem}
+  .hero-right{order:-1}
+  .photo-frame{width:180px;height:180px}
+  section{padding:4rem 1.5rem}
+  .about-grid,.edu-grid,.contact-grid,.expertise-grid{grid-template-columns:1fr;gap:2rem}
+  .tl-item{grid-template-columns:1fr;gap:1rem}
+  footer{flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <a href="#home" class="logo">MNS<span>.dev</span></a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:muditnarayansoni@gmail.com?subject=Hiring Inquiry&body=Hello Mudit, I would like to discuss...." class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="home">
+  <div class="hero-noise"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span>Open to opportunities</div>
+    <div class="hero-greeting">// Hi, Myself</div>
+    <h1>Mudit<br><em>Narayan Soni</em></h1>
+    <div class="hero-role">
+      &gt; I'm a <span class="typed"></span>
+    </div>
+    <p class="hero-desc">
+      Python Developer & Cloud Engineer building scalable backend systems and automated deployment pipelines..
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-main"><i class="fa-solid fa-eye"></i> View My Work</a>
+      <a href="#contact" class="btn-ghost"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+      <a href="resume/mudit_DevOps_SRE_1.pdf" target="_blank" class="btn-ghost">
+        <i class="fa-solid fa-file-pdf"></i> Resume
+      </a>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/muditsoni/" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://leetcode.com/u/Mudit_Narayan_Soni/" target="_blank" class="social-btn" title="LeetCode"><i class="fa-solid fa-code"></i></a>
+      <a href="mailto:muditnarayansoni@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="photo-frame">
+      <img src="profile-photo/mudit-portfolio-photo.jpeg" alt="Mudit Narayan Soni">
+    </div>
+    <div class="hero-stats-row">
+      <div class="hstat"><span class="hstat-val">250+</span><span class="hstat-lab">DSA Solved</span></div>
+      <div class="hstat"><span class="hstat-val">4★</span><span class="hstat-lab">HackerRank</span></div>
+      <div class="hstat"><span class="hstat-val">6+</span><span class="hstat-lab">Certs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about-bg" id="about">
+  <div class="sec-tag">01 — About Me</div>
+  <div class="sec-title">A Little About Myself</div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+  <p>
+    I am a <strong>Software Developer graduate</strong> specializing in <strong>Cloud Computing</strong> from Chandigarh University. I focus on building scalable backend systems and cloud-native applications by combining <strong>Python development, DevOps practices, and modern cloud technologies</strong>.
+  </p>
+  <p>
+    I have hands-on experience designing RESTful APIs, automating CI/CD pipelines, and deploying containerized applications using tools like Docker, Kubernetes, and cloud platforms such as AWS and Azure. I enjoy transforming ideas into production-ready systems that are efficient, reliable, and scalable.
+  </p>
+  <p>
+    I actively strengthen my problem-solving skills through Data Structures & Algorithms and continuously explore new tools in the DevOps ecosystem. I am a merit-based scholarship recipient and have ranked among the top performers in campus-level competitions.
+  </p>
+</div>
+    <div class="about-cards">
+      <div class="acard">
+        <div class="acard-label">Location</div>
+        <div class="acard-val">Mohali, Punjab, India</div>
+      </div>
+      <div class="acard">
+        <div class="acard-label">University</div>
+        <div class="acard-val">Chandigarh University <span class="cgpa-badge">CGPA 7.94</span></div>
+      </div>
+      <div class="acard">
+        <div class="acard-label">Degree</div>
+        <div class="acard-val">B.E. Computer Science (Cloud Computing) · 2022–2026</div>
+      </div>
+      <div class="acard">
+        <div class="acard-label">Email</div>
+        <div class="acard-val"><a href="mailto:muditnarayansoni@gmail.com">muditnarayansoni@gmail.com</a></div>
+      </div>
+      <div class="acard">
+        <div class="acard-label">Phone</div>
+        <div class="acard-val">+91 6378549252</div>
+      </div>
+      <div class="acard">
+        <div class="acard-label">Status</div>
+        <div class="acard-val" style="color:var(--green)">✦ Open to full-time & internship roles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SKILLS ═══════ -->
+<section id="skills">
+  <div class="sec-tag">02 — Tech Stack</div>
+  <div class="sec-title">Skills & Technologies</div>
+  <div class="skills-grid reveal">
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-green"><i class="fa-brands fa-python"></i></div>
+        <div><div class="skill-card-name">Python</div><div class="skill-card-sub">Advanced · 85%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag hot">FastAPI</span>
+        <span class="tag hot">Flask</span>
+        <span class="tag hot">Django</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Scripting</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-blue"><i class="fa-brands fa-docker"></i></div>
+        <div><div class="skill-card-name">DevOps & Cloud</div><div class="skill-card-sub">Intermediate · 70%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag blue">Docker</span>
+        <span class="tag blue">Kubernetes</span>
+        <span class="tag blue">GitHub Actions</span>
+        <span class="tag blue">Jenkins</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-orange"><i class="fa-brands fa-aws"></i></div>
+        <div><div class="skill-card-name">Cloud Platforms</div><div class="skill-card-sub">Intermediate · 68%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:68%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag orange">AWS EC2/S3</span>
+        <span class="tag orange">Lambda</span>
+        <span class="tag orange">Azure AKS</span>
+        <span class="tag orange">IAM</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-green"><i class="fa-solid fa-database"></i></div>
+        <div><div class="skill-card-name">Databases</div><div class="skill-card-sub">Intermediate · 75%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag hot">PostgreSQL</span>
+        <span class="tag hot">MySQL</span>
+        <span class="tag hot">SQLite</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">SQLAlchemy</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-blue"><i class="fa-brands fa-react"></i></div>
+        <div><div class="skill-card-name">Frontend</div><div class="skill-card-sub">Familiar · 55%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:55%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag blue">React</span>
+        <span class="tag blue">Next.js</span>
+        <span class="tag blue">TypeScript</span>
+        <span class="tag blue">Tailwind</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-head">
+        <div class="skill-icon si-orange"><i class="fa-solid fa-microchip"></i></div>
+        <div><div class="skill-card-name">CS Foundations</div><div class="skill-card-sub">Solid · 80%</div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="tags">
+        <span class="tag orange">DSA</span>
+        <span class="tag orange">OOP</span>
+        <span class="tag orange">DBMS</span>
+        <span class="tag orange">Linux</span>
+        <span class="tag orange">Networking</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ EXPERTISE ═══════ -->
+<section class="exp-bg" id="expertise">
+  <div class="sec-tag">03 — Focus Areas</div>
+  <div class="sec-title">Expertise</div>
+  <div class="expertise-grid reveal">
+    <div class="exp-card">
+      <div class="exp-card-icon si-green" style="background:var(--green-dim)"><i class="fa-brands fa-python" style="color:var(--green)"></i></div>
+      <h3>Python Development</h3>
+      <p>Backend APIs, automation scripts, and data utilities written in Python with a focus on readability, performance, and maintainability. I build REST APIs with FastAPI and Flask, and work with SQLAlchemy for database integration.</p>
+      <div class="tags" style="margin-bottom:1rem">
+        <span class="tag hot">FastAPI</span>
+        <span class="tag hot">Flask</span>
+        <span class="tag hot">Django</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">pytest</span>
+      </div>
+      <div class="exp-sub-grid">
+        <div class="exp-sub"><h4>Web & APIs</h4><p>FastAPI, Flask, routing, auth, background jobs.</p></div>
+        <div class="exp-sub"><h4>Data & Scripts</h4><p>Pandas, CSV/JSON processing, log parsers, automation.</p></div>
+        <div class="exp-sub"><h4>Databases</h4><p>SQL, ORMs, migrations, indexing, optimization.</p></div>
+        <div class="exp-sub"><h4>Quality</h4><p>pytest, type hints, linting, virtual envs.</p></div>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-card-icon si-blue" style="background:var(--blue-dim)"><i class="fa-brands fa-docker" style="color:var(--blue)"></i></div>
+      <h3>DevOps & Cloud Engineering</h3>
+      <p>I like taking code all the way to deployment — using containers, pipelines, and cloud services to deliver reliable applications. From Docker images to CI/CD pipelines and cloud deployments on AWS and Azure.</p>
+      <div class="tags" style="margin-bottom:1rem">
+        <span class="tag blue">Docker</span>
+        <span class="tag blue">Kubernetes</span>
+        <span class="tag blue">GitHub Actions</span>
+        <span class="tag blue">Jenkins</span>
+        <span class="tag orange">AWS</span>
+        <span class="tag orange">Azure</span>
+      </div>
+      <div class="exp-sub-grid">
+        <div class="exp-sub"><h4>Containers</h4><p>Docker, Dockerfiles, multi-stage builds, Compose.</p></div>
+        <div class="exp-sub"><h4>Orchestration</h4><p>Kubernetes, deployments, services, AKS.</p></div>
+        <div class="exp-sub"><h4>CI/CD</h4><p>GitHub Actions, Jenkins, automated deploy pipelines.</p></div>
+        <div class="exp-sub"><h4>Cloud</h4><p>AWS/OCI compute, storage, networking, serverless.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROJECTS ═══════ -->
+<section id="projects">
+  <div class="sec-tag">04 — Selected Work</div>
+  <div class="sec-title">Projects</div>
+  <div class="projects-grid reveal">
+
+    <div class="proj-card">
+      <div class="proj-num">01 / PROJECT</div>
+      <div class="proj-name">DSA Visualizer</div>
+      <div class="proj-desc">Interactive platform to visualize sorting, searching, and traversal algorithms in real time. State-driven React components for step-by-step execution with a responsive, modular UI.</div>
+      <div class="proj-stack">
+        <span class="proj-tech">Next.js</span>
+        <span class="proj-tech">React</span>
+        <span class="proj-tech">TypeScript</span>
+        <span class="proj-tech">Tailwind CSS</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://dsa-code-structure-visualizer.netlify.app/" target="_blank" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <a href="#" class="proj-link"><i class="fa-brands fa-github"></i> Code</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">02 / PROJECT</div>
+      <div class="proj-name">Cloud-Driven User Learning Analytics</div>
+      <div class="proj-desc">Cloud-native analytics platform to process and analyze user activity data in real time. Scalable backend with FastAPI, REST APIs, AWS Lambda, and Docker. Visualized engagement metrics and learning trends.</div>
+      <div class="proj-stack">
+        <span class="proj-tech">Python</span>
+        <span class="proj-tech">FastAPI</span>
+        <span class="proj-tech">AWS Lambda</span>
+        <span class="proj-tech">Docker</span>
+      </div>
+      <div class="proj-links">
+        <a href="#" class="proj-link"><i class="fa-brands fa-github"></i> Code</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">03 / PROJECT</div>
+      <div class="proj-name">Automated App Deployment with Kubernetes</div>
+      <div class="proj-desc">CI/CD pipeline building Docker images, running tests, and deploying to a Kubernetes cluster with rolling updates. Implemented on Azure Kubernetes Service (AKS) with auto-scaling and load balancing.</div>
+      <div class="proj-stack">
+        <span class="proj-tech">Docker</span>
+        <span class="proj-tech">Kubernetes</span>
+        <span class="proj-tech">GitHub Actions</span>
+        <span class="proj-tech">Jenkins</span>
+        <span class="proj-tech">Azure AKS</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/MUDIT122333/automated-application-deployment-deployment-model-using-AKS" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> Code</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">04 / PROJECT</div>
+      <div class="proj-name">Microblog Web Application</div>
+      <div class="proj-desc">Full-stack microblog with authentication and post management. RESTful backend using Flask and SQLAlchemy with secure routing and scalable application architecture on PostgreSQL.</div>
+      <div class="proj-stack">
+        <span class="proj-tech">Python</span>
+        <span class="proj-tech">Flask</span>
+        <span class="proj-tech">SQLAlchemy</span>
+        <span class="proj-tech">PostgreSQL</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://task-manager-app-pu88.vercel.app/" target="_blank" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <a href="https://github.com/MUDIT122333/MICROBLOG-FLASK" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> Code</a>
+      </div>
+    </div>
+
+
+    <div class="proj-card">
+      <div class="proj-num">05 / PROJECT</div>
+      <div class="proj-name">Task Management System</div>
+      <div class="proj-desc">Engineered a scalable full-stack Task Management platform to optimize team productivity and task tracking. Implemented secure authentication, role-based authorization, and modular REST APIs for efficient task creation, assignment, and status management. Integrated a relational database for structured data handling and developed a dynamic dashboard to provide real-time insights into task progress, deadlines, and team performance.</div>
+      <div class="proj-stack">
+        <span class="proj-tech">Python</span>
+        <span class="proj-tech">Flask</span>
+        <span class="proj-tech">REST API</span>
+        <span class="proj-tech">SQLite</span>
+        <span class="proj-tech">JWT Authentication</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://task-manager-app-pu88.vercel.app/" target="_blank" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <a href="https://github.com/MUDIT122333/Task-manager-app" class="proj-link"><i class="fa-brands fa-github"></i> Code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EXPERIENCE ═══════ -->
+<section class="xp-bg" id="experience">
+  <div class="sec-tag">05 — Career</div>
+  <div class="sec-title">Work Experience</div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-date">Jan 2026 - Mar 2026</div>
+        <div class="tl-co">ZEEX-AI</div>
+        <div class="tl-type"><span>Remote</span></div>
+      </div>
+      <div>
+        <div class="tl-role">Junior DevOps Intern</div>
+        <ul class="tl-points">
+          <li>Designed and deployed a cloud-based search engine using DevOps best practices and cloud-native architecture.</li>
+          <li>Automated CI/CD pipelines using Jenkins, Docker, and GitHub Actions for build and deployment workflows.</li>
+          <li>Deployed containerized services on Azure Kubernetes Service (AKS) with auto-scaling and load balancing.</li>
+          <li>Managed version control, webhook integrations, and continuous deployment to ensure high availability.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EDUCATION ═══════ -->
+<section id="education">
+  <div class="sec-tag">06 — Learning</div>
+  <div class="sec-title">Education & Certifications</div>
+  <div class="edu-grid reveal">
+    <div>
+      <div class="edu-card" style="margin-bottom:1rem">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-deg">Bachelor of Engineering<br>Computer Science (Cloud Computing)</div>
+        <div class="edu-school">Chandigarh University · Mohali, Punjab</div>
+        <div class="edu-period">Nov 2022 – Jul 2026</div>
+        <div class="edu-detail">Coursework: Cloud Computing, Operating Systems, Computer Networks, DBMS, Data Structures & Algorithms, Software Engineering.</div>
+        <div class="edu-cgpa">⭐ CGPA: 7.71 / 10</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📚</div>
+        <div class="edu-deg">Higher Secondary Education</div>
+        <div class="edu-school">Science Stream</div>
+        <div class="edu-detail">Built strong fundamentals in Mathematics, Physics, and Computer Science which later helped in understanding algorithms and system design.</div>
+      </div>
+    </div>
+    <div class="certs-list">
+      <div class="cert"><div class="cert-dot cd-aws"><i class="fa-brands fa-aws"></i></div><div><div class="cert-name">AWS Certified Cloud Practitioner(CLF-C02)</div><div class="cert-by">Amazon Web Services</div></div></div>
+      <div class="cert"><div class="cert-dot cd-az"><i class="fa-solid fa-cloud"></i></div><div><div class="cert-name">AWS Certified AI Practitioner(AIF-C01)</div><div class="cert-by">Amazon Web Services</div></div></div>
+      <div class="cert"><div class="cert-dot cd-az"><i class="fa-solid fa-cloud"></i></div><div><div class="cert-name">AWS Certified Developer Associate(DVA-C02) </div><div class="cert-by">Amazon Web Services</div></div></div>
+      <div class="cert"><div class="cert-dot cd-oc"><i class="fa-solid fa-circle-nodes"></i></div><div><div class="cert-name">OCI 2024 GenAI Professional</div><div class="cert-by">Oracle Cloud Infrastructure</div></div></div>
+      <div class="cert"><div class="cert-dot cd-oc"><i class="fa-solid fa-circle-nodes"></i></div><div><div class="cert-name">Oracle Cloud Developer</div><div class="cert-by">Oracle</div></div></div>
+      <div class="cert"><div class="cert-dot cd-py"><i class="fa-brands fa-python"></i></div><div><div class="cert-name">100 Days of Python</div><div class="cert-by">Udemy</div></div></div>
+      <div class="cert"><div class="cert-dot cd-py"><i class="fa-brands fa-python"></i></div><div><div class="cert-name">Python</div><div class="cert-by">LinkedIn Learning</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ACHIEVEMENTS ═══════ -->
+<section class="ach-bg" id="achievements">
+  <div class="sec-tag">07 — Highlights</div>
+  <div class="sec-title">Achievements</div>
+  <div class="ach-grid reveal">
+    <div class="ach-card"><div class="ach-ico">🏅</div><div class="ach-txt">Merit-based scholarship recipient at Chandigarh University.</div></div>
+    <div class="ach-card"><div class="ach-ico">🏆</div><div class="ach-txt">Ranked top-10 among 1,000 participants in a campus-level aptitude competition.</div></div>
+    <div class="ach-card"><div class="ach-ico">⭐</div><div class="ach-txt">Achieved 4-star rating on HackerRank for problem-solving skills.</div></div>
+    <div class="ach-card"><div class="ach-ico">💻</div><div class="ach-txt">Solved 250+ Data Structures and Algorithms problems across platforms.</div></div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact">
+  <div class="sec-tag">08 — Let's Talk</div>
+  <div class="sec-title">Get In Touch</div>
+  <div class="contact-grid reveal">
+    <div>
+      <p style="color:var(--muted2);font-size:0.93rem;line-height:1.8;margin-bottom:2rem">
+        Have an opportunity, project idea, or just want to discuss Python and DevOps?<br>
+        Drop a message and I'll get back to you as soon as possible.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:muditnarayansoni@gmail.com" class="clink">
+          <div class="clink-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div><div class="clink-label">Email</div><div class="clink-val">muditnarayansoni@gmail.com</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/muditsoni/" target="_blank" class="clink">
+          <div class="clink-icon"><i class="fa-brands fa-linkedin"></i></div>
+          <div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/muditsoni</div></div>
+        </a>
+        <a href="https://leetcode.com/u/Mudit_Narayan_Soni/" target="_blank" class="clink">
+          <div class="clink-icon"><i class="fa-solid fa-code"></i></div>
+          <div><div class="clink-label">LeetCode</div><div class="clink-val">Mudit_Narayan_Soni</div></div>
+        </a>
+        <a href="https://github.com/MUDIT122333" target="_blank" class="clink">
+          <div class="clink-icon"><i class="fa-brands fa-github"></i></div>
+          <div><div class="clink-label">GitHub</div><div class="clink-val">github.com/MUDIT122333</div></div>
+        </a>
+      </div>
+    </div>
+
+    <form class="cform" action="https://formspree.io/f/mzdoejkn" method="POST">
+      <div class="fgroup">
+        <label class="flabel">Name</label>
+        <input class="finput" type="text" name="name" placeholder="Your name" required/>
+      </div>
+      <div class="fgroup">
+        <label class="flabel">Email</label>
+        <input class="finput" type="email" name="email" placeholder="your@email.com" required/>
+      </div>
+      <div class="fgroup">
+        <label class="flabel">Subject</label>
+        <input class="finput" type="text" name="subject" placeholder="What's this about?"/>
+      </div>
+      <div class="fgroup">
+        <label class="flabel">Message</label>
+        <textarea class="ftextarea" name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+      </div>
+      <button type="submit" class="btn-main" style="align-self:flex-start">
+        <i class="fa-solid fa-paper-plane"></i> Send Message
+      </button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <span class="fl">MNS.dev</span>
+  <span>© 2026 Mudit Narayan Soni · Mohali, Punjab</span>
+  <span>Built with <span style="color:var(--green)">♥</span> & Python Dreams</span>
+</footer>
+
+<script>
+// Typed.js
+new Typed('.typed',{
+  strings:['Python Developer','Backend Engineer', 'DevOps / Cloud Enthusiast'],
+  typeSpeed:75,backSpeed:40,backDelay:1400,loop:true
+});
+
+// Active nav on scroll
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const active=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{threshold:0.4});
+sections.forEach(s=>observer.observe(s));
+
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}});
+},{threshold:0.1});
+reveals.forEach(r=>ro.observe(r));
+
+// Contact form
+const form=document.getElementById('contact-form');
+const status=document.getElementById('form-status');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  status.textContent='Sending...';status.style.color='var(--muted2)';
+  await new Promise(r=>setTimeout(r,800));
+  status.textContent='✓ Thanks! I\'ll get back to you soon.';
+  status.style.color='var(--green)';
+  form.reset();
+  setTimeout(()=>status.textContent='',4000);
+});
+
+// Skill bar animation on scroll
+const bars=document.querySelectorAll('.bar-fill');
+const baro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const w=e.target.style.width;
+      e.target.style.width='0';
+      setTimeout(()=>e.target.style.width=w,100);
+      baro.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+bars.forEach(b=>baro.observe(b));
+</script>
+</body>
+</html>
